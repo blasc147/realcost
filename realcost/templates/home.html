@@ -1,0 +1,106 @@
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" media="screen">
+    <script src="{{ STATIC_URL }}js/jquery-1.11.1.min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <title></title>
+    <script>
+        $("a[href='#top']").click(function() {
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            return false;
+        });
+
+        $(document).ready(function(){
+            $("input[type='submit']").click(function(e) {
+                location.hash = "";
+            });
+        });
+    </script>
+</head>
+<body>
+    <br />
+    <br />
+    <div class="container">
+        {% crispy form %}
+        <br />
+        <br />
+        {% if bank_total_cost %}
+            <hr />
+            <br />
+            <h3><a name="results">Compare Bank vs Dealership Car Loan Results:</a> <small>
+                <a href="#top" style="color: green">^ Top</a></small>
+            </h3>
+            <div class="well well-lg">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Dealership</th>
+                        <th>Bank</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-right alert-info"><b>Total loan cost including interest:</b></td>
+                        {% if dealership_total_cost < bank_total_cost %}
+                            <td class="alert-success">{{ dealership_total_cost|intcomma }} (Lower Total Cost)</td>
+                            <td class="alert-danger">{{ bank_total_cost|intcomma }} (Higher Total Cost)</td>
+                        {% else %}
+                            <td class="alert-danger">{{ dealership_total_cost|intcomma }} (Higher Total Cost)</td>
+                            <td class="alert-success">{{ bank_total_cost|intcomma }} (Lower Total Cost)</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td class="text-right alert-info"><b>Total loan interest ($):</b></td>
+                        {% if dealership_total_interest_dollars < bank_total_interest_dollars %}
+                            <td class="alert-success">{{ dealership_total_interest_dollars|intcomma }} (Less Interest Paid)</td>
+                            <td class="alert-danger">{{ bank_total_interest_dollars|intcomma }} (More Interest Paid)</td>
+                        {% else %}
+                            <td class="alert-danger">{{ dealership_total_interest_dollars|intcomma }} (More Interest Paid)</td>
+                            <td class="alert-success">{{ bank_total_interest_dollars|intcomma }} (Less Interest Paid)</td>
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        {% endif %}
+    </div><!-- /.container -->
+</body>
+
+<script>
+    {% if bank_total_cost %}
+        location.hash = "#results";
+    {% endif %}
+</script>
+
+</html>
