@@ -50,7 +50,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td class="text-right alert-info"><b>Total loan cost including interest:</b></td>
+                        <td class="text-right alert-info"><b>Total cost including interest ($):</b></td>
                         {% if dealership_total_cost < bank_total_cost %}
                             <td class="alert-success">{{ dealership_total_cost|intcomma }} (Lower Total Cost)</td>
                             <td class="alert-danger">{{ bank_total_cost|intcomma }} (Higher Total Cost)</td>
@@ -60,7 +60,7 @@
                         {% endif %}
                     </tr>
                     <tr>
-                        <td class="text-right alert-info"><b>Total loan interest ($):</b></td>
+                        <td class="text-right alert-info"><b>Effective interest cost ($):</b></td>
                         {% if dealership_total_interest_dollars < bank_total_interest_dollars %}
                             <td class="alert-success">{{ dealership_total_interest_dollars|intcomma }} (Less Interest Paid)</td>
                             <td class="alert-danger">{{ bank_total_interest_dollars|intcomma }} (More Interest Paid)</td>
@@ -70,7 +70,7 @@
                         {% endif %}
                     </tr>
                     <tr>
-                        <td class="text-right alert-info"><b>Real interest rate (%):</b></td>
+                        <td class="text-right alert-info"><b>Effective APR (%):</b></td>
                         <td class="alert-warning">{{ real_interest_rate }} %</td>
                         <td></td>
                     </tr>
