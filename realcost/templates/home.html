@@ -71,7 +71,13 @@
                     </tr>
                     <tr>
                         <td class="text-right alert-info"><b>Effective APR (%):</b></td>
-                        <td class="alert-warning">{{ real_interest_rate }} %</td>
+                        {% if real_dealership_interest_rate < real_bank_interest_rate %}
+                            <td class="alert-success">{{ real_dealership_interest_rate}} % (Lower APR)</td>
+                            <td class="alert-danger">{{ real_bank_interest_rate}} % (Higher APR)</td>
+                        {% else %}
+                            <td class="alert-danger">{{ real_dealership_interest_rate}} % (Lower APR)</td>
+                            <td class="alert-success">{{ real_bank_interest_rate}} % (Higher APR)</td>
+                        {% endif %}
                         <td></td>
                     </tr>
                     </tbody>
