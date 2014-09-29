@@ -25,10 +25,10 @@ def home(request):
             bank_total_cost = round((net_price - rebate) * ((1 + bank_borrowing_rate/bank_compounding_period)**(bank_compounding_period*TERM_YEARS)), 2)
             dealership_total_cost = round(net_price * ((1 + dealership_borrowing_rate/dealership_compounding_period)**(bank_compounding_period*TERM_YEARS)), 2)
 
-            real_interest_rate = round(dealership_compounding_period * ((Decimal(dealership_total_cost)/(net_price - rebate)) ** (1 / (dealership_compounding_period * TERM_YEARS))), 2)
+            real_interest_rate = round((dealership_compounding_period * ((Decimal(dealership_total_cost)/(net_price - rebate)) ** (1 / (dealership_compounding_period * TERM_YEARS)))) + (dealership_borrowing_rate * 100), 2)
 
             bank_total_interest_dollars = round(Decimal(bank_total_cost) - (net_price - rebate), 2)
-            dealership_total_interest_dollars = round(Decimal(dealership_total_cost) - net_price, 2)
+            dealership_total_interest_dollars = round(Decimal(dealership_total_cost) - (net_price - rebate), 2)
 
             return render(request, 'home.html', {'form': form,
                                                  'bank_total_cost': bank_total_cost,
