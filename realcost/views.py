@@ -14,7 +14,7 @@ def payment(principal, apr, number_of_periods):
     else:
         monthly_interest_rate = apr/12
         periodic_payment = principal*(monthly_interest_rate + (monthly_interest_rate/((1+monthly_interest_rate)**number_of_periods - 1)))
-    return round(periodic_payment, 2)
+    return periodic_payment
 
 
 def home(request):
