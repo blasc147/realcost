@@ -62,7 +62,7 @@
                         {% endif %}
                     </tr>
                     <tr>
-                        <td class="text-right alert-info"><b>Effective interest cost ($):</b></td>
+                        <td class="text-right alert-info"><b>Effective interest ($):</b></td>
                         {% if dealership_total_interest_dollars < bank_total_interest_dollars %}
                             <td class="alert-success">{{ dealership_total_interest_dollars|intcomma }} (Less Interest Paid)</td>
                             <td class="alert-danger">{{ bank_total_interest_dollars|intcomma }} (More Interest Paid)</td>
@@ -72,13 +72,23 @@
                         {% endif %}
                     </tr>
                     <tr>
+                        <td class="text-right alert-info"><b>Monthly payment ($):</b></td>
+                        {% if dealership_monthly_payment < bank_monthly_payment %}
+                            <td class="alert-success">{{ dealership_monthly_payment|intcomma }} (Lower Monthly Payments)</td>
+                            <td class="alert-danger">{{ bank_monthly_payment|intcomma }} (Higher Monthly Payments)</td>
+                        {% else %}
+                            <td class="alert-danger">{{ dealership_monthly_payment|intcomma }} (Higher Monthly Payments)</td>
+                            <td class="alert-success">{{ bank_monthly_payment|intcomma }} (Lower Monthly Payments)</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
                         <td class="text-right alert-info"><b>Effective APR (%):</b></td>
                         {% if real_dealership_interest_rate < real_bank_interest_rate %}
-                            <td class="alert-success">{{ real_dealership_interest_rate}} % (Lower APR)</td>
-                            <td class="alert-danger">{{ real_bank_interest_rate}} % (Higher APR)</td>
+                            <td class="alert-success">{{ real_dealership_interest_rate}} (Lower APR)</td>
+                            <td class="alert-danger">{{ real_bank_interest_rate}} (Higher APR)</td>
                         {% else %}
-                            <td class="alert-danger">{{ real_dealership_interest_rate}} % (Lower APR)</td>
-                            <td class="alert-success">{{ real_bank_interest_rate}} % (Higher APR)</td>
+                            <td class="alert-danger">{{ real_dealership_interest_rate}} (Higher APR)</td>
+                            <td class="alert-success">{{ real_bank_interest_rate}} (Lower APR)</td>
                         {% endif %}
                         <td></td>
                     </tr>
