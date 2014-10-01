@@ -71,12 +71,12 @@ def home(request):
             # Return values to HTML page.
             # Dollar amounts are formatted to exactly two decimal places.
             return render(request, 'home.html', {'form': form,
-                                                 'bank_total_cost': '%.2f' % bank_total_cost,
-                                                 'dealership_total_cost': '%.2f' % dealership_total_cost,
-                                                 'bank_total_interest_dollars': '%.2f' % bank_total_interest_dollars,
-                                                 'dealership_total_interest_dollars': '%.2f' % dealership_total_interest_dollars,
-                                                 'bank_monthly_payment': '%.2f' % bank_monthly_payment,
-                                                 'dealership_monthly_payment': '%.2f' % dealership_monthly_payment,
+                                                 'bank_total_cost': Decimal('%.2f' % bank_total_cost),
+                                                 'dealership_total_cost': Decimal('%.2f' % dealership_total_cost),
+                                                 'bank_total_interest_dollars': Decimal('%.2f' % bank_total_interest_dollars),
+                                                 'dealership_total_interest_dollars': Decimal('%.2f' % dealership_total_interest_dollars),
+                                                 'bank_monthly_payment': Decimal('%.2f' % bank_monthly_payment),
+                                                 'dealership_monthly_payment': Decimal('%.2f' % dealership_monthly_payment),
                                                  'real_dealership_interest_rate': effective_dealership_apr,
                                                  'real_bank_interest_rate': bank_apr})
     else:
