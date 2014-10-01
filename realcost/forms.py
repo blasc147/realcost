@@ -43,8 +43,8 @@ class RealCostForm(forms.Form):
                     Div(
                         Div(PrependedText('net_price', '$', placeholder='Net price'), css_class="col-lg-12"),
                         Div(PrependedText('rebate', '$', placeholder='Cash rebate'), css_class="col-lg-12"),
-                        Div(PrependedText('bank_borrowing_rate', '%', placeholder='Bank borrowing rate'), css_class="col-lg-4"),
-                        Div(PrependedText('dealership_borrowing_rate', '%', placeholder='Dealership borrowing rate'), css_class="col-lg-4"),
+                        Div(PrependedText('bank_borrowing_rate', '%', placeholder='Bank borrowing rate'), css_class="col-lg-6"),
+                        Div(PrependedText('dealership_borrowing_rate', '%', placeholder='Dealership borrowing rate'), css_class="col-lg-6"),
                         Div(Field('months_borrowed'), css_class="col-lg-12"),
                         css_class="row"
                     ),
