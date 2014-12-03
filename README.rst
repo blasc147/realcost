@@ -8,11 +8,13 @@ This web calculator was based off this post:
 http://carloanscanada.com/resources-2/0-car-financing/
 
 Requirements:
+
 - Python
 - Django 1.7
 - Django Crispy Forms
 
 Credits:
+
 - Peter Stock
 - Brian Stock
 - Ryan Currah
