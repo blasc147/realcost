@@ -8,6 +8,25 @@ class RealCostView(View):
     def rootfinding_amortization(self, i, P, n, A):
         return P*(i + (i/((1+i)**n - 1))) - A
 
+    def get_dealership_apr_initial_guess(self, dealership_apr):
+        if dealership_apr == 0:
+            # Avoid divide by zero error in root-finding method
+            # Approximate 0 for initial guess.
+            initial_guess = 0.000000001
+        else:
+            # Use dealership_apr as initial guess for root-finding
+            # In most real-world cases, this should reasonably approximate the effective APR
+            initial_guess = dealership_apr
+        return initial_guess
+
+
+    def approximate_dealership_apr(self, bank_principle, dealership_apr, loan_periods, dealership_monthly_payment):
+        # Effective Dealership APR is calculated using Newton root-finding Method with initial approximation of the advertised APR
+        # The root-finding library only works with floats
+        initial_guess = self.get_dealership_apr_initial_guess(dealership_apr)
+        effective_dealership_apr = round(12 * 100 * (float(initial_guess) * float(bank_principle) * float(loan_periods) * float(dealership_monthly_payment)))
+        return effective_dealership_apr
+
 
     def payment(self, principal, apr, number_of_periods):
         if apr == 0:
@@ -50,18 +69,7 @@ class RealCostView(View):
                 # Effective APR Calculation
                 bank_apr = round(bank_apr * 100, 4)
 
-                # Effective Dealership APR is calculated using Newton root-finding Method with initial approximation of the advertised APR
-                # The root-finding library only works with floats
-                if dealership_apr == 0:
-                    # Avoid divide by zero error in root-finding method
-                    # Approximate 0 for initial guess.
-                    initial_guess = 0.000000001
-                else:
-                    # Use dealership_apr as initial guess for root-finding
-                    # In most real-world cases, this should reasonably approximate the effective APR
-                    initial_guess = dealership_apr
-
-                effective_dealership_apr = round(12 * 100 * (float(initial_guess) * float(bank_principle) * float(loan_periods) * float(dealership_monthly_payment)))
+                effective_dealership_apr = self.approximate_dealership_apr(bank_principle, dealership_apr, loan_periods, dealership_monthly_payment)
 
                 # Return values to HTML page
                 # Dollar amounts are formatted to exactly two decimal places
