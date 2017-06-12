@@ -76,8 +76,6 @@ ROOT_URLCONF = 'realcost.urls'
 WSGI_APPLICATION = 'realcost.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
     'default': {
