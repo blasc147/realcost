@@ -20,7 +20,7 @@ SECRET_KEY = '1d6%m_jbtsus01m-c7osnsfl2rkqxfoofgmpn=b!)$yb3j6-aa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['realcost.herokuapp.com']
 
 TEMPLATES = [
     {
