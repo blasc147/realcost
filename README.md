@@ -5,9 +5,8 @@ A django web calculator for determining the real costs of a dealership loan
 ---------------------------------------------------------------------------
 Status:
 https://app.codeship.com/projects/43d75950-314e-0135-5d4e-168a2fa6663e/status?branch=master
+
 [ ![Codeship Status for blasc147/realcost](https://app.codeship.com/projects/43d75950-314e-0135-5d4e-168a2fa6663e/status?branch=master)](https://app.codeship.com/projects/225680)
-"!https://app.codeship.com/projects/43d75950-314e-0135-5d4e-168a2fa6663e/status?branch=master!":https://app.codeship.com/projects/225680
-{<img src="https://app.codeship.com/projects/43d75950-314e-0135-5d4e-168a2fa6663e/status?branch=master" alt="Status?branch=master" />}[https://app.codeship.com/projects/225680]
 
 Python version:
 
@@ -38,11 +37,6 @@ Fedora requirements:
 
 Python PIP requirements:
 
-- Django 1.7
+- Django 1.10
 - Django Crispy Forms 1.4.0
 
-Credits:
-
-- Peter Stock
-- Brian Stock
-- Ryan Currah
